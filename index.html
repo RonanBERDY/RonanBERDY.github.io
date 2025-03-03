@@ -271,27 +271,80 @@
 </html>
 
   
-  <!-- Portfolio Section -->
-  <section id="portfolio">
-    <h2>My Work</h2>
+<section id="portfolio">
+  <h2>My Work</h2>
+  <!-- The container ensures that only 3 projects are visible at once -->
+  <div class="portfolio-container">
+    <!-- The grid holds all 4 projects side-by-side -->
     <div class="portfolio-grid">
       <div class="portfolio-item" style="animation-delay: 0.2s;">
         <img src="../pictures/project1.png" alt="Project 1">
         <h3>Salesforce CRM Implementation</h3>
-        <p>I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client. In this role, I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates. I gathered user feedback to address issues promptly and utilized data visualization to track adoption progress, creating a global dashboard with defined KPIs and best practices. This comprehensive approach not only enhanced user engagement but also boosted data-driven decision-making across the organization.</p>
+        <p>
+          I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client. In this role, I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates. I gathered user feedback to address issues promptly and utilized data visualization to track adoption progress, creating a global dashboard with defined KPIs and best practices. This comprehensive approach not only enhanced user engagement but also boosted data-driven decision-making across the organization.
+        </p>
       </div>
       <div class="portfolio-item" style="animation-delay: 0.4s;">
         <img src="../pictures/project2.png" alt="Project 2">
         <h3>Grid Codes Automation & Data Consolidation Initiative</h3>
-        <p>I joined the Grid Codes area and developed a script to automate report generation from multiple databases, streamlining our data processes. Additionally, I supported my teams by leveraging Microsoft services with VBA and macros, introducing new productivity tools. I also rethought the SharePoint data structure by launching user surveys to collect feedback, which enabled the creation of a single data source and the integration of a chatbot to enhance user experience.</p>
+        <p>
+          I joined the Grid Codes area and developed a script to automate report generation from multiple databases, streamlining our data processes. Additionally, I supported my teams by leveraging Microsoft services with VBA and macros, introducing new productivity tools. I also rethought the SharePoint data structure by launching user surveys to collect feedback, which enabled the creation of a single data source and the integration of a chatbot to enhance user experience.
+        </p>
       </div>
       <div class="portfolio-item" style="animation-delay: 0.6s;">
         <img src="../pictures/project3.png" alt="Project 3">
         <h3>Digital Art Showcase: Web Development for a Painter</h3>
-        <p>I crafted a custom website using Angular to showcase a painter's work, starting with a deep understanding of his creative vision and budget. The project focused on creating a smooth, sustainable implementation that not only enhances his reputation but also empowers him to manage and update the website independently—enabling him to express his evolving artistic journey as he sees fit.</p>
+        <p>
+          I crafted a custom website using Angular to showcase a painter's work, starting with a deep understanding of his creative vision and budget. The project focused on creating a smooth, sustainable implementation that not only enhances his reputation but also empowers him to manage and update the website independently—enabling him to express his evolving artistic journey as he sees fit.
+        </p>
+      </div>
+      <div class="portfolio-item" style="animation-delay: 0.8s;">
+        <img src="../pictures/project4.png" alt="Project 4">
+        <h3>Fourth Project Title</h3>
+        <p>
+          This project demonstrates additional expertise and innovation in a different field. Its development highlights creative problem-solving and a strong focus on user-centric design.
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- CSS styling: The container hides the overflow and the grid is set up as a flex container -->
+<style>
+  #portfolio {
+    padding: 20px;
+  }
+  .portfolio-container {
+    overflow: hidden;
+  }
+  .portfolio-grid {
+    display: flex;
+    /* With 4 items each taking 33.33% width, the total width is 133.33% */
+    width: calc(33.33% * 4);
+    transition: transform 0.5s ease-in-out;
+  }
+  .portfolio-item {
+    flex: 0 0 33.33%;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+</style>
+
+<!-- JavaScript: Rotates the grid every 5 seconds -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const grid = document.querySelector('.portfolio-grid');
+    let slide = 0;
+    // We have 2 states:
+    // - slide = 0 shows projects 1, 2, 3.
+    // - slide = 1 translates left by one item (33.33%) to show projects 2, 3, 4.
+    setInterval(() => {
+      slide = (slide + 1) % 2;
+      grid.style.transform = `translateX(-${slide * 33.33}%)`;
+    }, 5000); // change slide every 5 seconds
+  });
+</script>
+
   
   <!-- Contact Section -->
   <section id="contact">
