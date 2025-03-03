@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modern Portfolio</title>
+  <!-- Google Fonts for a modern feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      /* Full-page gradient background */
+      background: linear-gradient(135deg, #2c3e50, #4ca1af);
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-end;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+    }
+    nav a {
+      margin-left: 2rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ffcc00; }
+
+    /* Hero Section */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    /* Slide-in effect for initial load */
+    .hero-content.slide {
+      animation: slideIn 1s ease-out forwards;
+    }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    /* Floating animation for a gentle up-and-down motion */
+    .float {
+      animation: float 5s ease-in-out infinite 1s;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    section h2::after {
+      content: "";
+      display: block;
+      width: 60%;
+      height: 3px;
+      background: #ffcc00;
+      margin: 0.5rem auto 0;
+    }
+    section p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Portfolio Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+    .portfolio-item {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: reveal 0.8s forwards;
+    }
+    .portfolio-item img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.5s ease;
+    }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-item h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.5rem;
+    }
+    .portfolio-item p { font-size: 1rem; color: #ddd; }
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 4px;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      background: #ffcc00;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover { background: #e6b800; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  
+  <!-- Hero Section with Floating Animation -->
+  <header id="home">
+    <div class="hero-content slide">
+      <div class="float">
+        <h1>Modern Portfolio</h1>
+        <p>Creativity meets innovation.</p>
+      </div>
+    </div>
+  </header>
+  
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello, I'm [Your Name], a creative developer with a passion for modern design and innovative solutions. Let's build something amazing together.</p>
+  </section>
+  
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>My Work</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" style="animation-delay: 0.2s;">
+        <img src="https://via.placeholder.com/400x250" alt="Project 1">
+        <h3>Project One</h3>
+        <p>Modern design meets functionality in this project.</p>
+      </div>
+      <div class="portfolio-item" style="animation-delay: 0.4s;">
+        <img src="https://via.placeholder.com/400x250" alt="Project 2">
+        <h3>Project Two</h3>
+        <p>An innovative solution that redefines user experience.</p>
+      </div>
+      <div class="portfolio-item" style="animation-delay: 0.6s;">
+        <img src="https://via.placeholder.com/400x250" alt="Project 3">
+        <h3>Project Three</h3>
+        <p>A perfect blend of creativity and technology.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Interested in working together? Drop me a message below!</p>
+    <div class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 [Your Name]. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
