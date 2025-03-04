@@ -54,6 +54,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
     .background-video {
       width: 100%;
@@ -65,14 +66,14 @@
         height: auto;
       }
     }
-    /* Optional overlay for hero text */
     .hero-content {
       position: absolute;
       text-align: center;
       color: #fff;
-    }
-    .hero-content.slide {
+      opacity: 0;
+      transform: translateY(50px);
       animation: slideIn 1s ease-out forwards;
+      animation-delay: 0.5s;
     }
     @keyframes slideIn {
       0% { opacity: 0; transform: translateY(50px); }
@@ -93,6 +94,10 @@
       max-width: 100%;
       height: auto;
       border-radius: 8px;
+      transition: transform 0.5s ease;
+    }
+    .about-image img:hover {
+      transform: scale(1.05);
     }
     @media screen and (max-width: 768px) {
       .about-container {
@@ -131,7 +136,7 @@
       max-width: 1200px;
       margin: auto;
     }
-    /* For mobile: use flex slider */
+    /* For mobile: flex slider */
     .portfolio-grid {
       display: flex;
       transition: transform 0.5s ease-in-out;
@@ -143,18 +148,28 @@
       background: rgba(0, 0, 0, 0.4);
       border-radius: 8px;
       overflow: hidden;
-      transform: translateY(20px);
+      transform: translateY(20px) scale(1);
       opacity: 0;
-      animation: reveal 0.8s forwards;
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
-    .portfolio-item img {
+    .portfolio-item.visible {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    .portfolio-item:hover {
+      transform: translateY(0) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .portfolio-item img,
+    .portfolio-item video {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 8px;
       transition: transform 0.5s ease;
     }
-    .portfolio-item:hover img {
+    .portfolio-item img:hover,
+    .portfolio-item video:hover {
       transform: scale(1.05);
     }
     .portfolio-item h3 {
@@ -164,9 +179,6 @@
     .portfolio-item p {
       font-size: 1rem;
       color: #ddd;
-    }
-    @keyframes reveal {
-      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Desktop layout: grid with space between items */
@@ -178,9 +190,9 @@
         transform: none; /* Disable slider transform */
       }
       .portfolio-item {
-        animation: none;
+        /* Initialize as visible on larger screens */
         opacity: 1;
-        transform: none;
+        transform: translateY(0);
       }
     }
 
@@ -191,6 +203,10 @@
       background: rgba(0, 0, 0, 0.4);
       padding: 2rem;
       border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .contact-form:hover {
+      transform: translateY(-5px);
     }
     .contact-form input,
     .contact-form textarea {
@@ -199,6 +215,11 @@
       margin-bottom: 1rem;
       border: none;
       border-radius: 4px;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
     }
     .contact-form button {
       width: 100%;
@@ -237,7 +258,7 @@
       <source src="../pictures/home.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div class="hero-content slide">
+    <div class="hero-content">
       <h1>Welcome to My Portfolio</h1>
       <p>Bridging technology and creativity.</p>
     </div>
@@ -268,7 +289,7 @@
         </div>
         <div class="portfolio-item">
           <img src="../pictures/project2.png" alt="Project 2">
-          <h3>Grid Codes Automation & Data Consolidation Initiative</h3>
+          <h3>Grid Codes Automation &amp; Data Consolidation Initiative</h3>
           <p>I developed a script to automate report generation from multiple databases, streamlining data processes. I also supported teams by leveraging Microsoft services with VBA and macros.</p>
         </div>
         <div class="portfolio-item">
@@ -277,9 +298,12 @@
           <p>I crafted a custom website using Angular to showcase a painter's work, enabling him to manage and update the site independently.</p>
         </div>
         <div class="portfolio-item">
-          <img src="../pictures/project4.png" alt="Project 4">
-          <h3>Fourth Project Title</h3>
-          <p>This project demonstrates additional expertise and innovation in a different field, highlighting creative problem-solving and a strong focus on user-centric design.</p>
+          <video autoplay muted playsinline class="background-video">
+            <source src="../pictures/Vidéo sans titre ‐ Réalisée avec Clipchamp (4).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <h3>AI-Driven Snake Game Development</h3>
+          <p>I developed an AI agent that plays the game Snake using reinforcement learning.</p>
         </div>
       </div>
     </div>
@@ -322,11 +346,26 @@
     });
   </script>
 
+  <!-- Intersection Observer for Reveal Animations -->
+  <script>
+    // On larger screens, reveal portfolio items on scroll
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    portfolioItems.forEach(item => observer.observe(item));
+  </script>
+
   <!-- Script for pausing video on end -->
   <script>
-    const video = document.getElementById('bg-video');
-    video.addEventListener('ended', () => {
-      video.pause();
+    const bgVideo = document.getElementById('bg-video');
+    bgVideo.addEventListener('ended', () => {
+      bgVideo.pause();
     });
   </script>
 </body>
