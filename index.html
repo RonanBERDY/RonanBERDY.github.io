@@ -377,7 +377,7 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Your Email" required>
       <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+      <button type="submit" onclick="Sendmail()">Send Message</button>
     </div>
   </section>
 
@@ -429,37 +429,7 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
     });
   </script>
 
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("kuotpK-wvOMRhSAoa"); 
-
-    document.getElementById("contact-form").addEventListener("submit", function (event) {
-      event.preventDefault(); // Prevent default form submission
-
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-
-      if (!name || !email || !message) {
-        alert("Please fill in all fields before submitting.");
-        return;
-      }
-
-      emailjs.send("service_kzfn3ql", "template_cffczij", {
-        from_name: name,
-        from_email: email,
-        message: message,
-      }).then(function (response) {
-        alert("Message sent successfully!");
-        document.getElementById("contact-form").reset(); // Reset the form
-      }).catch(function (error) {
-        console.error("Error:", error);
-        alert("Failed to send message. Please try again later.");
-      });
-    });
-  });
-</script>
+  
 
 </body>
 </html>
