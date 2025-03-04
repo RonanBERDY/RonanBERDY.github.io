@@ -181,6 +181,27 @@
       color: #ddd;
     }
 
+    /* Technical Skills Badges */
+    .tech-skills {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tech-skills span {
+      background: rgba(255, 204, 0, 0.2);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ffcc00;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .tech-skills span:hover {
+      background: rgba(255, 204, 0, 0.4);
+      transform: scale(1.05);
+    }
+
     /* Desktop layout: grid with space between items */
     @media screen and (min-width: 768px) {
       .portfolio-grid {
@@ -190,7 +211,6 @@
         transform: none; /* Disable slider transform */
       }
       .portfolio-item {
-        /* Initialize as visible on larger screens */
         opacity: 1;
         transform: translateY(0);
       }
@@ -282,28 +302,54 @@
     <h2>My Work</h2>
     <div class="portfolio-slider">
       <div class="portfolio-grid">
+        <!-- Salesforce CRM Implementation -->
         <div class="portfolio-item">
           <img src="../pictures/project1.png" alt="Project 1">
           <h3>Salesforce CRM Implementation</h3>
           <p>I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client. I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates.</p>
+          <div class="tech-skills">
+            <span>Jira</span>
+            <span>PowerBI</span>
+            <span>SalesForces</span>
+            <span>SCRUM</span>
+          </div>
         </div>
+        <!-- INNIO / Grid Codes Automation Initiative -->
         <div class="portfolio-item">
           <img src="../pictures/project2.png" alt="Project 2">
           <h3>Grid Codes Automation &amp; Data Consolidation Initiative</h3>
-          <p>I developed a script to automate report generation from multiple databases, streamlining data processes. I also supported teams by leveraging Microsoft services with VBA and macros.</p>
+          <p>I developed a script to automate report generation from multiple databases, streamlining data processes. This initiative was carried out for INNIO, focusing on data accuracy and operational efficiency.</p>
+          <div class="tech-skills">
+            <span>Python</span>
+            <span>PowerAutomate</span>
+            <span>PowerBI</span>
+            <span>SCRUM</span>
+          </div>
         </div>
+        <!-- Angular / Digital Art Showcase -->
         <div class="portfolio-item">
           <img src="../pictures/project3.png" alt="Project 3">
           <h3>Digital Art Showcase: Web Development for a Painter</h3>
           <p>I crafted a custom website using Angular to showcase a painter's work, enabling him to manage and update the site independently.</p>
+          <div class="tech-skills">
+            <span>Angular</span>
+            <span>Typescript</span>
+            <span>Tailwind</span>
+            <span>Cypress</span>
+          </div>
         </div>
+        <!-- AI-Driven Snake Game Development -->
         <div class="portfolio-item">
           <video autoplay muted playsinline class="background-video">
             <source src="../pictures/Vidéo sans titre ‐ Réalisée avec Clipchamp (4).mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <h3>AI-Driven Snake Game Development</h3>
-          <p>I developed an AI agent that plays the game Snake using reinforcement learning.</p>
+          <p>I developed an AI agent that plays the game Snake using reinforcement learning techniques.</p>
+          <div class="tech-skills">
+            <span>Python</span>
+            <span>Pytorch</span>
+          </div>
         </div>
       </div>
     </div>
@@ -370,4 +416,5 @@
   </script>
 </body>
 </html>
+
 
