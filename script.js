@@ -1,4 +1,4 @@
-document.getElementById("contact").addEventListener("submit", function (event) {
+function Sendmail() {
       event.preventDefault(); // Prevent default form submission
 
       const name = document.getElementById("name").value;
