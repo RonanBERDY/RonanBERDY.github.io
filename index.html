@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ronan Berdy Portfolio</title>
-  <!-- Google Fonts for a modern feel -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
-    /* Base styles */
+    /* Base reset */
     * {
       margin: 0;
       padding: 0;
@@ -79,25 +78,6 @@
         height: auto;
       }
     }
-    .hero-content {
-      position: absolute;
-      text-align: center;
-      color: #fff;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: slideIn 1s ease-out forwards;
-      animation-delay: 0.5s;
-    }
-    @keyframes slideIn {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
     /* About Section */
     .about-container {
@@ -154,45 +134,37 @@
     }
 
     /* Portfolio Section */
-    .portfolio-slider {
-      overflow: hidden;
+    .portfolio-grid {
+      /* On mobile, just stack the items vertically */
+      display: block;
       width: 100%;
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
     }
-
-    /* MOBILE (default) - flex container for horizontal slider, no wrapping */
-    .portfolio-grid {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      flex-wrap: nowrap; /* key fix for the mobile slider */
-    }
-
+    /* Each item is a block, with some margin below to separate them */
     .portfolio-item {
-      flex: 0 0 100%;
-      box-sizing: border-box;
-      padding: 10px;
       background: rgba(0, 0, 0, 0.4);
       border-radius: 8px;
-      overflow: hidden;
-      transform: translateY(20px) scale(1);
+      margin-bottom: 2rem;
+      padding: 1rem;
       opacity: 0;
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .portfolio-item.visible {
-      transform: translateY(0) scale(1);
       opacity: 1;
+      transform: translateY(0);
     }
     .portfolio-item:hover {
-      transform: translateY(0) scale(1.02);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(0) scale(1.02);
     }
     .portfolio-item img,
     .portfolio-item video {
       width: 100%;
       height: auto;
-      display: block;
       border-radius: 8px;
+      margin-bottom: 1rem;
       transition: transform 0.5s ease;
     }
     .portfolio-item img:hover,
@@ -200,7 +172,7 @@
       transform: scale(1.05);
     }
     .portfolio-item h3 {
-      margin: 1rem 0 0.5rem;
+      margin: 0.5rem 0;
       font-size: 1.5rem;
     }
     .portfolio-item p {
@@ -208,7 +180,6 @@
       color: #ddd;
     }
 
-    /* Technical Skills Badges */
     .tech-skills {
       margin-top: 1rem;
       display: flex;
@@ -230,64 +201,30 @@
       transform: scale(1.05);
     }
 
-    /* DESKTOP (>=768px) - switch to grid layout, disable slider transform */
+    /* On Desktop, display items in a grid */
     @media screen and (min-width: 768px) {
       .portfolio-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        transform: none; /* disable slider transform on desktop */
-        flex-wrap: initial; /* let grid handle everything */
       }
       .portfolio-item {
-        opacity: 1;
-        transform: translateY(0);
-        flex: initial; /* so the grid sizing works as expected */
+        margin-bottom: 0; /* handled by gap in grid */
+        transform: translateY(0); /* so they appear immediately */
+        opacity: 1;              /* visible by default (or let IntersectionObserver handle) */
       }
     }
 
-    /* Ensure anchor wrapper behaves like a block */
-    .portfolio-link {
-      display: block;
+    /* Contact Info */
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem auto;
+      max-width: 300px;
+      text-align: left;
     }
-
-    /* Contact Form (not currently in use, but included) */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 2rem;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-    .contact-form:hover {
-      transform: translateY(-5px);
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 4px;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-    }
-    .contact-form button {
-      width: 100%;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 4px;
-      background: #ffcc00;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .contact-form button:hover {
-      background: #e6b800;
+    .contact-list li {
+      margin-bottom: 0.5rem;
     }
 
     /* Footer */
@@ -299,6 +236,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Navigation -->
   <nav>
@@ -319,7 +257,7 @@
   <section id="about">
     <div class="about-container">
       <div class="about-text">
-        <h2>Nice to meet you !</h2>
+        <h2>Nice to meet you!</h2>
         <p>
           Hello there! I'm Ronan, a 23-year-old currently living in Austria, but originally from Clermont-Ferrand, France.
           I'm an engineer specializing in digital transformation, working at the intersection of IT, automation, and energy efficiency.
@@ -338,89 +276,83 @@
   <!-- Portfolio Section -->
   <section id="portfolio">
     <h2>My Work</h2>
-    <div class="portfolio-slider">
-      <div class="portfolio-grid">
+    <div class="portfolio-grid">
 
-        <!-- 1) Salesforce CRM Implementation -->
-        <div class="portfolio-item">
-          <img src="../pictures/project1.png" alt="Project 1">
-          <h3>Salesforce CRM Implementation</h3>
-          <p>
-            I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client.
-            I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates.
-          </p>
-          <div class="tech-skills">
-            <span>Jira</span>
-            <span>PowerBI</span>
-            <span>SalesForces</span>
-            <span>SCRUM</span>
-          </div>
+      <!-- (1) Salesforce CRM Implementation -->
+      <div class="portfolio-item">
+        <img src="../pictures/project1.png" alt="Project 1">
+        <h3>Salesforce CRM Implementation</h3>
+        <p>
+          I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client.
+          I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates.
+        </p>
+        <div class="tech-skills">
+          <span>Jira</span>
+          <span>PowerBI</span>
+          <span>Salesforce</span>
+          <span>SCRUM</span>
         </div>
+      </div>
 
-        <!-- 2) INNIO / Grid Codes Automation Initiative -->
-        <div class="portfolio-item">
-          <img src="../pictures/project2.png" alt="Project 2">
-          <h3>Grid Codes Automation &amp; Data Consolidation Initiative</h3>
-          <p>
-            I developed a script to automate report generation from multiple databases, streamlining data processes.
-            This initiative was carried out for INNIO, focusing on data accuracy and operational efficiency.
-          </p>
-          <div class="tech-skills">
-            <span>Python</span>
-            <span>PowerAutomate</span>
-            <span>PowerBI</span>
-            <span>SCRUM</span>
-          </div>
+      <!-- (2) Grid Codes Automation & Data Consolidation -->
+      <div class="portfolio-item">
+        <img src="../pictures/project2.png" alt="Project 2">
+        <h3>Grid Codes Automation &amp; Data Consolidation</h3>
+        <p>
+          I developed a script to automate report generation from multiple databases, streamlining data processes for INNIO.
+        </p>
+        <div class="tech-skills">
+          <span>Python</span>
+          <span>PowerAutomate</span>
+          <span>PowerBI</span>
+          <span>SCRUM</span>
         </div>
+      </div>
 
-        <!-- 3) Digital Art Showcase (clickable) -->
-        <div class="portfolio-item">
-          <a href="https://sbpainting.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-            <video autoplay muted playsinline loop class="background-video">
-              <source src="../pictures/project3.webm" type="video/webm">
-              Your browser does not support the video tag.
-            </video>
-            <h3>Digital Art Showcase: Web Development for a Painter</h3>
-            <p>
-              I built a custom Angular website to showcase a painter’s work while enabling him to manage and update it independently.
-              I designed an intuitive interface, provided guidance, and streamlined workflows to enhance his digital presence.
-            </p>
-            <div class="tech-skills">
-              <span>Angular</span>
-              <span>Typescript</span>
-              <span>Tailwind</span>
-              <span>Cypress</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- 4) AI-Driven Snake Game Development -->
-        <div class="portfolio-item">
-          <video autoplay muted playsinline loop class="background-video">
-            <source src="../pictures/Média1.webm" type="video/webm">
+      <!-- (3) Digital Art Showcase -->
+      <div class="portfolio-item">
+        <a href="https://sbpainting.vercel.app/" target="_blank" rel="noopener noreferrer" style="display: block;">
+          <video autoplay muted playsinline loop>
+            <source src="../pictures/project3.webm" type="video/webm">
             Your browser does not support the video tag.
           </video>
-          <h3>AI-Driven Snake Game Development</h3>
+          <h3>Digital Art Showcase: Web Development for a Painter</h3>
           <p>
-            I developed an AI agent that plays the game Snake using reinforcement learning techniques.
+            I built a custom Angular website to showcase a painter’s work while enabling him to manage and update it independently.
           </p>
           <div class="tech-skills">
-            <span>Python</span>
-            <span>Pytorch</span>
+            <span>Angular</span>
+            <span>Typescript</span>
+            <span>Tailwind</span>
+            <span>Cypress</span>
           </div>
-        </div>
-
+        </a>
       </div>
+
+      <!-- (4) AI-Driven Snake Game -->
+      <div class="portfolio-item">
+        <video autoplay muted playsinline loop>
+          <source src="../pictures/Média1.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+        <h3>AI-Driven Snake Game Development</h3>
+        <p>
+          I developed an AI agent that plays the game Snake using reinforcement learning techniques.
+        </p>
+        <div class="tech-skills">
+          <span>Python</span>
+          <span>PyTorch</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>
-      Feel free to reach out to me for any inquiries, collaborations, or just to say hello!
-    </p>
-    <ul>
+    <p>Feel free to reach out for any inquiries, collaborations, or just to say hello!</p>
+    <ul class="contact-list">
       <li>Email: <a href="mailto:ronanberdy@yahoo.fr">ronanberdy@yahoo.fr</a></li>
       <li>LinkedIn: <a href="https://www.linkedin.com/in/ronan-berdy/" target="_blank" rel="noopener noreferrer">My LinkedIn</a></li>
       <li>GitHub: <a href="https://github.com/RonanBERDY/" target="_blank" rel="noopener noreferrer">My GitHub</a></li>
@@ -432,30 +364,9 @@
     <p>&copy; 2025 Ronan Berdy. All Rights Reserved.</p>
   </footer>
 
-  <!-- JavaScript for Mobile Slider -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Enable slider functionality only on mobile devices
-      if (window.innerWidth < 768) {
-        const grid = document.querySelector('.portfolio-grid');
-        const items = document.querySelectorAll('.portfolio-item');
-        const totalItems = items.length;
-        let currentSlide = 0;
-
-        function updateSlider() {
-          grid.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-
-        setInterval(function() {
-          currentSlide = (currentSlide + 1) % totalItems;
-          updateSlider();
-        }, 5000);
-      }
-    });
-  </script>
-
   <!-- Intersection Observer for Reveal Animations -->
   <script>
+    // Fade in the portfolio items when they enter the viewport
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -463,17 +374,19 @@
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.2 });
-    portfolioItems.forEach(item => observer.observe(item));
-  </script>
+    }, { threshold: 0.1 });
 
-  <!-- Script for pausing video on end -->
-  <script>
+    portfolioItems.forEach(item => observer.observe(item));
+
+    // Pause background video after it ends (optional)
     const bgVideo = document.getElementById('bg-video');
-    bgVideo.addEventListener('ended', () => {
-      bgVideo.pause();
-    });
+    if(bgVideo){
+      bgVideo.addEventListener('ended', () => {
+        bgVideo.pause();
+      });
+    }
   </script>
 </body>
 </html>
+
 
