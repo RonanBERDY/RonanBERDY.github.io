@@ -6,10 +6,7 @@
   <title>Ronan Berdy Portfolio</title>
   <!-- Google Fonts for a modern feel -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-  </script>
-
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
     /* Base styles */
@@ -43,13 +40,8 @@
     }
     nav a:hover { color: #ffcc00; }
     @media screen and (max-width: 768px) {
-      nav {
-        padding: 0.5rem 1rem;
-      }
-      nav a {
-        margin-left: 1rem;
-        font-size: 0.9rem;
-      }
+      nav { padding: 0.5rem 1rem; }
+      nav a { margin-left: 1rem; font-size: 0.9rem; }
     }
 
     /* Header with Video Background */
@@ -67,9 +59,7 @@
       object-fit: cover;
     }
     @media screen and (max-width: 768px) {
-      .background-video {
-        height: auto;
-      }
+      .background-video { height: auto; }
     }
     .hero-content {
       position: absolute;
@@ -101,13 +91,9 @@
       border-radius: 8px;
       transition: transform 0.5s ease;
     }
-    .about-image img:hover {
-      transform: scale(1.05);
-    }
+    .about-image img:hover { transform: scale(1.05); }
     @media screen and (max-width: 768px) {
-      .about-container {
-        flex-direction: column;
-      }
+      .about-container { flex-direction: column; }
     }
 
     /* Section Titles */
@@ -141,7 +127,7 @@
       max-width: 1200px;
       margin: auto;
     }
-    /* For mobile: flex slider */
+    /* Mobile slider: flex container */
     .portfolio-grid {
       display: flex;
       transition: transform 0.5s ease-in-out;
@@ -214,13 +200,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        transform: none; /* Disable slider transform */
+        transform: none; /* Disable slider transform on desktop */
       }
       .portfolio-item {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
+    /* Ensure anchor wrapper behaves like a block */
+    .portfolio-link { display: block; }
 
     /* Contact Form */
     .contact-form {
@@ -231,9 +220,7 @@
       border-radius: 8px;
       transition: transform 0.3s ease;
     }
-    .contact-form:hover {
-      transform: translateY(-5px);
-    }
+    .contact-form:hover { transform: translateY(-5px); }
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -257,9 +244,7 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-    .contact-form button:hover {
-      background: #e6b800;
-    }
+    .contact-form button:hover { background: #e6b800; }
 
     /* Footer */
     footer {
@@ -291,10 +276,14 @@
     <div class="about-container">
       <div class="about-text">
         <h2>Nice to meet you !</h2>
-        <p>Hello there! I'm Ronan, a 23-year-old currently living in Austria, but originally from Clermont-Ferrand, France. I'm an engineer specializing in digital transformation, working at the intersection of IT, automation, and energy efficiency.
-Beyond my professional life, music and sports are my true passions. I've been playing the piano for years, and it's my favorite way to unwind and express creativity. On the other side, running is my go-to sport—whether it's for the thrill of pushing my limits or simply clearing my mind, you'll often find me on the road chasing new goals.
-I'm also constantly looking for ways to grow, whether it's improving my technical skills, expanding my financial knowledge (investing intrigue me), or try new things.
-At the end of the day, I strive for a well-balanced life—one that blends intellectual curiosity, personal passions, and problem-solving while keeping an international outlook.</p>
+        <p>
+          Hello there! I'm Ronan, a 23-year-old currently living in Austria, but originally from Clermont-Ferrand, France.
+          I'm an engineer specializing in digital transformation, working at the intersection of IT, automation, and energy efficiency.
+          Beyond my professional life, music and sports are my true passions. I've been playing the piano for years, and it's my favorite way to unwind and express creativity.
+          Running is my go-to sport—whether it's for the thrill of pushing my limits or simply clearing my mind, you'll often find me on the road chasing new goals.
+          I'm also constantly looking for ways to grow, whether it's improving my technical skills, expanding my financial knowledge, or trying new things.
+          At the end of the day, I strive for a well-balanced life—one that blends intellectual curiosity, personal passions, and problem-solving while keeping an international outlook.
+        </p>
       </div>
       <div class="about-image">
         <img src="../pictures/pic.jpg" alt="Ronan's picture">
@@ -311,7 +300,10 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
         <div class="portfolio-item">
           <img src="../pictures/project1.png" alt="Project 1">
           <h3>Salesforce CRM Implementation</h3>
-          <p>I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client. I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates.</p>
+          <p>
+            I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client.
+            I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates.
+          </p>
           <div class="tech-skills">
             <span>Jira</span>
             <span>PowerBI</span>
@@ -323,7 +315,10 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
         <div class="portfolio-item">
           <img src="../pictures/project2.png" alt="Project 2">
           <h3>Grid Codes Automation &amp; Data Consolidation Initiative</h3>
-          <p>I developed a script to automate report generation from multiple databases, streamlining data processes. This initiative was carried out for INNIO, focusing on data accuracy and operational efficiency.</p>
+          <p>
+            I developed a script to automate report generation from multiple databases, streamlining data processes.
+            This initiative was carried out for INNIO, focusing on data accuracy and operational efficiency.
+          </p>
           <div class="tech-skills">
             <span>Python</span>
             <span>PowerAutomate</span>
@@ -331,24 +326,25 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
             <span>SCRUM</span>
           </div>
         </div>
-        <!-- Angular / Digital Art Showcase -->
-        <!-- Angular / Digital Art Showcase -->
+        <!-- Digital Art Showcase for a Painter (clickable) -->
         <a href="https://sbpainting.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-        <div class="portfolio-item">
-          <video autoplay muted playsinline loop class="background-video">
-            <source src="../pictures/project3.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-          
-          <h3>Digital Art Showcase: Web Development for a Painter</h3>
-          <p>I built a custom Angular website to showcase a painter’s work while enabling him to manage and update it independently. I designed an intuitive interface, provided guidance, and streamlined workflows to enhance his digital presence.</p>
-          <div class="tech-skills">
-            <span>Angular</span>
-            <span>Typescript</span>
-            <span>Tailwind</span>
-            <span>Cypress</span>
+          <div class="portfolio-item">
+            <video autoplay muted playsinline loop class="background-video">
+              <source src="../pictures/project3.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+            <h3>Digital Art Showcase: Web Development for a Painter</h3>
+            <p>
+              I built a custom Angular website to showcase a painter’s work while enabling him to manage and update it independently.
+              I designed an intuitive interface, provided guidance, and streamlined workflows to enhance his digital presence.
+            </p>
+            <div class="tech-skills">
+              <span>Angular</span>
+              <span>Typescript</span>
+              <span>Tailwind</span>
+              <span>Cypress</span>
+            </div>
           </div>
-        </div>
         </a>
         <!-- AI-Driven Snake Game Development -->
         <div class="portfolio-item">
@@ -357,7 +353,9 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
             Your browser does not support the video tag.
           </video>
           <h3>AI-Driven Snake Game Development</h3>
-          <p>I developed an AI agent that plays the game Snake using reinforcement learning techniques.</p>
+          <p>
+            I developed an AI agent that plays the game Snake using reinforcement learning techniques.
+          </p>
           <div class="tech-skills">
             <span>Python</span>
             <span>Pytorch</span>
@@ -367,17 +365,18 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
     </div>
   </section>
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Feel free to reach out to me for any inquiries, collaborations, or just to say hello!</p>
-  <ul>
-    <li>Email: <a href="mailto:ronanberdy@yahoo.fr">ronanberdy@yahoo.fr</a></li>
-    <li>LinkedIn: <a href="https://www.linkedin.com/in/ronan-berdy/" target="_blank" rel="noopener noreferrer">My LinkedIn</a></li>
-    <li>GitHub: <a href="https://github.com/RonanBERDY/" target="_blank" rel="noopener noreferrer">My GitHub</a></li>
-  </ul>
-</section>
-
-
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>
+      Feel free to reach out to me for any inquiries, collaborations, or just to say hello!
+    </p>
+    <ul>
+      <li>Email: <a href="mailto:ronanberdy@yahoo.fr">ronanberdy@yahoo.fr</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/ronan-berdy/" target="_blank" rel="noopener noreferrer">My LinkedIn</a></li>
+      <li>GitHub: <a href="https://github.com/RonanBERDY/" target="_blank" rel="noopener noreferrer">My GitHub</a></li>
+    </ul>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -387,18 +386,20 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
   <!-- JavaScript for Mobile Slider -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Only enable slider functionality on mobile devices
+      // Enable slider functionality only on mobile devices
       if (window.innerWidth < 768) {
         const grid = document.querySelector('.portfolio-grid');
         const items = document.querySelectorAll('.portfolio-item');
         const totalItems = items.length;
-        // For mobile, we display one item at a time
-        const visibleCount = 1;
-        const slideCount = totalItems - visibleCount + 1;
-        let slide = 0;
-        setInterval(() => {
-          slide = (slide + 1) % slideCount;
-          grid.style.transform = `translateX(-${slide * 100}%)`;
+        let currentSlide = 0;
+        
+        function updateSlider() {
+          grid.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        
+        setInterval(function() {
+          currentSlide = (currentSlide + 1) % totalItems;
+          updateSlider();
         }, 5000);
       }
     });
@@ -406,7 +407,6 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
 
   <!-- Intersection Observer for Reveal Animations -->
   <script>
-    // On larger screens, reveal portfolio items on scroll
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -415,7 +415,6 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
         }
       });
     }, { threshold: 0.2 });
-
     portfolioItems.forEach(item => observer.observe(item));
   </script>
 
@@ -426,11 +425,5 @@ At the end of the day, I strive for a well-balanced life—one that blends intel
       bgVideo.pause();
     });
   </script>
-
-  
-
 </body>
 </html>
-
-
-
