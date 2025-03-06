@@ -10,8 +10,14 @@
 
   <style>
     /* Base styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #2c3e50, #4ca1af);
@@ -19,7 +25,10 @@
       line-height: 1.6;
       min-height: 100vh;
     }
-    a { text-decoration: none; color: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     /* Navigation */
     nav {
@@ -38,10 +47,17 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-    nav a:hover { color: #ffcc00; }
+    nav a:hover {
+      color: #ffcc00;
+    }
     @media screen and (max-width: 768px) {
-      nav { padding: 0.5rem 1rem; }
-      nav a { margin-left: 1rem; font-size: 0.9rem; }
+      nav {
+        padding: 0.5rem 1rem;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+      }
     }
 
     /* Header with Video Background */
@@ -59,7 +75,9 @@
       object-fit: cover;
     }
     @media screen and (max-width: 768px) {
-      .background-video { height: auto; }
+      .background-video {
+        height: auto;
+      }
     }
     .hero-content {
       position: absolute;
@@ -71,8 +89,14 @@
       animation-delay: 0.5s;
     }
     @keyframes slideIn {
-      0% { opacity: 0; transform: translateY(50px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* About Section */
@@ -83,17 +107,26 @@
       gap: 20px;
       padding: 2rem;
     }
-    .about-text { flex: 1; }
-    .about-image { flex: 1; text-align: center; }
+    .about-text {
+      flex: 1;
+    }
+    .about-image {
+      flex: 1;
+      text-align: center;
+    }
     .about-image img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
       transition: transform 0.5s ease;
     }
-    .about-image img:hover { transform: scale(1.05); }
+    .about-image img:hover {
+      transform: scale(1.05);
+    }
     @media screen and (max-width: 768px) {
-      .about-container { flex-direction: column; }
+      .about-container {
+        flex-direction: column;
+      }
     }
 
     /* Section Titles */
@@ -127,11 +160,14 @@
       max-width: 1200px;
       margin: auto;
     }
-    /* Mobile slider: flex container */
+
+    /* MOBILE (default) - flex container for horizontal slider, no wrapping */
     .portfolio-grid {
       display: flex;
       transition: transform 0.5s ease-in-out;
+      flex-wrap: nowrap; /* key fix for the mobile slider */
     }
+
     .portfolio-item {
       flex: 0 0 100%;
       box-sizing: border-box;
@@ -194,24 +230,28 @@
       transform: scale(1.05);
     }
 
-    /* Desktop layout: grid with space between items */
+    /* DESKTOP (>=768px) - switch to grid layout, disable slider transform */
     @media screen and (min-width: 768px) {
       .portfolio-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        transform: none; /* Disable slider transform on desktop */
+        transform: none; /* disable slider transform on desktop */
+        flex-wrap: initial; /* let grid handle everything */
       }
       .portfolio-item {
         opacity: 1;
         transform: translateY(0);
+        flex: initial; /* so the grid sizing works as expected */
       }
     }
 
     /* Ensure anchor wrapper behaves like a block */
-    .portfolio-link { display: block; }
+    .portfolio-link {
+      display: block;
+    }
 
-    /* Contact Form */
+    /* Contact Form (not currently in use, but included) */
     .contact-form {
       max-width: 600px;
       margin: 0 auto;
@@ -220,7 +260,9 @@
       border-radius: 8px;
       transition: transform 0.3s ease;
     }
-    .contact-form:hover { transform: translateY(-5px); }
+    .contact-form:hover {
+      transform: translateY(-5px);
+    }
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -244,7 +286,9 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-    .contact-form button:hover { background: #e6b800; }
+    .contact-form button:hover {
+      background: #e6b800;
+    }
 
     /* Footer */
     footer {
@@ -291,83 +335,84 @@
     </div>
   </section>
 
+  <!-- Portfolio Section -->
   <section id="portfolio">
-  <h2>My Work</h2>
-  <div class="portfolio-slider">
-    <div class="portfolio-grid">
+    <h2>My Work</h2>
+    <div class="portfolio-slider">
+      <div class="portfolio-grid">
 
-      <!-- 1) Salesforce CRM Implementation -->
-      <div class="portfolio-item">
-        <img src="../pictures/project1.png" alt="Project 1">
-        <h3>Salesforce CRM Implementation</h3>
-        <p>
-          I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client.
-          I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates.
-        </p>
-        <div class="tech-skills">
-          <span>Jira</span>
-          <span>PowerBI</span>
-          <span>SalesForces</span>
-          <span>SCRUM</span>
-        </div>
-      </div>
-
-      <!-- 2) INNIO / Grid Codes Automation Initiative -->
-      <div class="portfolio-item">
-        <img src="../pictures/project2.png" alt="Project 2">
-        <h3>Grid Codes Automation &amp; Data Consolidation Initiative</h3>
-        <p>
-          I developed a script to automate report generation from multiple databases, streamlining data processes.
-          This initiative was carried out for INNIO, focusing on data accuracy and operational efficiency.
-        </p>
-        <div class="tech-skills">
-          <span>Python</span>
-          <span>PowerAutomate</span>
-          <span>PowerBI</span>
-          <span>SCRUM</span>
-        </div>
-      </div>
-
-      <!-- 3) Digital Art Showcase (clickable) -->
-      <div class="portfolio-item">
-        <a href="https://sbpainting.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-          <video autoplay muted playsinline loop class="background-video">
-            <source src="../pictures/project3.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-          <h3>Digital Art Showcase: Web Development for a Painter</h3>
+        <!-- 1) Salesforce CRM Implementation -->
+        <div class="portfolio-item">
+          <img src="../pictures/project1.png" alt="Project 1">
+          <h3>Salesforce CRM Implementation</h3>
           <p>
-              I built a custom Angular website to showcase a painter’s work while enabling him to manage and update it independently.
-              I designed an intuitive interface, provided guidance, and streamlined workflows to enhance his digital presence.
+            I spearheaded the end-to-end development and deployment of a Salesforce CRM for a telecommunications client.
+            I effectively communicated with users, developers, and managers, conducted training sessions, and provided regular system updates.
           </p>
           <div class="tech-skills">
-            <span>Angular</span>
-            <span>Typescript</span>
-            <span>Tailwind</span>
-            <span>Cypress</span>
+            <span>Jira</span>
+            <span>PowerBI</span>
+            <span>SalesForces</span>
+            <span>SCRUM</span>
           </div>
-        </a>
-      </div>
-
-      <!-- 4) AI-Driven Snake Game Development -->
-      <div class="portfolio-item">
-        <video autoplay muted playsinline loop class="background-video">
-          <source src="../pictures/Média1.webm" type="video/webm">
-          Your browser does not support the video tag.
-        </video>
-        <h3>AI-Driven Snake Game Development</h3>
-        <p>
-          I developed an AI agent that plays the game Snake using reinforcement learning techniques.
-        </p>
-        <div class="tech-skills">
-          <span>Python</span>
-          <span>Pytorch</span>
         </div>
-      </div>
 
+        <!-- 2) INNIO / Grid Codes Automation Initiative -->
+        <div class="portfolio-item">
+          <img src="../pictures/project2.png" alt="Project 2">
+          <h3>Grid Codes Automation &amp; Data Consolidation Initiative</h3>
+          <p>
+            I developed a script to automate report generation from multiple databases, streamlining data processes.
+            This initiative was carried out for INNIO, focusing on data accuracy and operational efficiency.
+          </p>
+          <div class="tech-skills">
+            <span>Python</span>
+            <span>PowerAutomate</span>
+            <span>PowerBI</span>
+            <span>SCRUM</span>
+          </div>
+        </div>
+
+        <!-- 3) Digital Art Showcase (clickable) -->
+        <div class="portfolio-item">
+          <a href="https://sbpainting.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+            <video autoplay muted playsinline loop class="background-video">
+              <source src="../pictures/project3.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+            <h3>Digital Art Showcase: Web Development for a Painter</h3>
+            <p>
+              I built a custom Angular website to showcase a painter’s work while enabling him to manage and update it independently.
+              I designed an intuitive interface, provided guidance, and streamlined workflows to enhance his digital presence.
+            </p>
+            <div class="tech-skills">
+              <span>Angular</span>
+              <span>Typescript</span>
+              <span>Tailwind</span>
+              <span>Cypress</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4) AI-Driven Snake Game Development -->
+        <div class="portfolio-item">
+          <video autoplay muted playsinline loop class="background-video">
+            <source src="../pictures/Média1.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+          <h3>AI-Driven Snake Game Development</h3>
+          <p>
+            I developed an AI agent that plays the game Snake using reinforcement learning techniques.
+          </p>
+          <div class="tech-skills">
+            <span>Python</span>
+            <span>Pytorch</span>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Contact Section -->
   <section id="contact">
@@ -396,11 +441,11 @@
         const items = document.querySelectorAll('.portfolio-item');
         const totalItems = items.length;
         let currentSlide = 0;
-        
+
         function updateSlider() {
           grid.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
-        
+
         setInterval(function() {
           currentSlide = (currentSlide + 1) % totalItems;
           updateSlider();
@@ -431,3 +476,4 @@
   </script>
 </body>
 </html>
+
